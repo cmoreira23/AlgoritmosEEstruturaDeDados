@@ -11,11 +11,13 @@ public class HeapSortHelper extends SortHelper{
 	protected void sortElements() {
 		long tempoInicial = System.currentTimeMillis();
 
-		for (int i =  array.length/ 2 - 1; i >= 0; i--){
+		for (int i =  array.length / 2 - 1; i >= 0; i--) {
 			heapify(array, array.length, i);
 		}
 
-		for (int i = array.length - 1; i >= 0; i--){
+		for (int i = array.length - 1; i >= 0; i--) {
+			++this.trocas;
+
 			int temp = array[0];
 			array[0] = array[i];
 			array[i] = temp;
@@ -34,19 +36,19 @@ public class HeapSortHelper extends SortHelper{
 		
 		int largest = rootElementIndex;
 		
-		if (leftIndex < arrayLength && arr[leftIndex] > arr[largest])
-				largest = leftIndex;
+		if (leftIndex < arrayLength && arr[leftIndex] > arr[largest]) largest = leftIndex;
 		
-		if (rightIndex < arrayLength && arr[rightIndex] > arr[largest])
-				largest = rightIndex;
+		if (rightIndex < arrayLength && arr[rightIndex] > arr[largest]) largest = rightIndex;
+
+		this.comparacoes += 2;
 		
-		if (largest != rootElementIndex){
+		if (largest != rootElementIndex) {
+			++this.trocas;
+			int swap = arr[rootElementIndex];
+			arr[rootElementIndex] = arr[largest];
+			arr[largest] = swap;
 				
-				int swap = arr[rootElementIndex];
-				arr[rootElementIndex] = arr[largest];
-				arr[largest] = swap;
-				
-				this.heapify(arr, arrayLength, largest);
+			this.heapify(arr, arrayLength, largest);
 		}
 	}
 }

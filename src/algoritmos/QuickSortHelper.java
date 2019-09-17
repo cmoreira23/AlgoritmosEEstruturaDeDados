@@ -28,25 +28,32 @@ public class QuickSortHelper extends SortHelper{
 	}
 
 	private int separar(int[] vetor, int inicio, int fim) {
-		int pivo = vetor[inicio];
-		int i = inicio + 1, f = fim;
-		while (i <= f) {
-			this.comparacoes++;
-			if (vetor[i] <= pivo)
-				i++;
-			else if (pivo < vetor[f])
-				f--;
-			else {
-				this.trocas++;
-				int troca = vetor[i];
-				vetor[i] = vetor[f];
-				vetor[f] = troca;
-				i++;
-				f--;
+		int pivot = vetor[inicio];
+		++this.trocas;
+		do {
+			while (inicio < fim && vetor[fim] >= pivot) {
+				fim--;
+				++this.comparacoes;
 			}
-		}
-		vetor[inicio] = vetor[f];
-		vetor[f] = pivo;
-		return f;
+
+			if (inicio < fim) {
+				vetor[inicio] = vetor[fim];
+				++this.trocas;
+				while (inicio < fim && vetor[inicio] <= pivot) {
+   	 		  inicio++;
+					++this.comparacoes;
+				}
+
+				if (inicio < fim) {
+					vetor[fim] = vetor[inicio];
+					++this.trocas;
+				}
+			}   
+		} while (inicio < fim);
+
+		vetor[inicio] = pivot;
+		++this.trocas;
+
+		return inicio;
 	}
 }
