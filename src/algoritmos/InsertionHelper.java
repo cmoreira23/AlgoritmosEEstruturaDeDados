@@ -10,17 +10,21 @@ public class InsertionHelper extends SortHelper{
 	@Override
 	protected void sortElements() {
 		long tempoInicial = System.currentTimeMillis();
+    
+    for (int i = 1; i < array.length; i++) {
+      int j = i;      
+      while (j > 0 && array[j] < array[j - 1]) {
+        int temp = array[j];
+        array[j] = array[j - 1];
+        array[j - 1] = temp;
+				
+				j--;
 
-		int key; int i;
-		for (int j = 1; j < array.length; j++) {
-			key = array[j];
-			this.comparacoes += j;
-			for (i = j - 1; i >= 0 && array[i] > key; i--) {
-	      array[i + 1] = array[i];
-	      this.trocas++;
-	    }
-	    array[i + 1] = key;
-		}
+        ++this.trocas;
+        ++this.comparacoes;
+      }
+      ++this.comparacoes;
+    }
 
 		long tempoFinal = System.currentTimeMillis();
 		this.time = tempoFinal- tempoInicial;

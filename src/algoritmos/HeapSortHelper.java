@@ -11,7 +11,7 @@ public class HeapSortHelper extends SortHelper{
 	protected void sortElements() {
 		long tempoInicial = System.currentTimeMillis();
 
-		for (int i =  array.length/ 2 - 1; i >= 0; i--){
+		for (int i =  array.length / 2 - 1; i >= 0; i--) {
 			heapify(array, array.length, i);
 		}
 

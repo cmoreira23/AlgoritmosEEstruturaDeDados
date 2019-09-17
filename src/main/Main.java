@@ -26,12 +26,12 @@ public class Main {
         }
         csvReader.close();
         
-        // SortHelper helper = new InsertionHelper(quantity);
-        // SortHelper helper = new SelectionSortHelper(quantity);
-        // SortHelper helper = new QuickSortHelper(quantity, 0, quantity - 1);
-        // SortHelper helper = new ShellSortHelper(quantity);
-       
-        SortHelper helper = new HeapSortHelper(quantity);
+        // SortHelper helper = new InsertionHelper(quantity); // Trocas e comparações - OK/OK
+        // SortHelper helper = new SelectionSortHelper(quantity); // Trocas e comparações - OK/OK
+
+        // SortHelper helper = new QuickSortHelper(quantity, 0, quantity - 1); // Trocas e comparações - OK
+        SortHelper helper = new ShellSortHelper(quantity); // Trocas e comparações - OK
+        // SortHelper helper = new HeapSortHelper(quantity); // Trocas e comparações - OK
         helper.setArray(array);
         helper.sort();
     }

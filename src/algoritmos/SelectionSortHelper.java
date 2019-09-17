@@ -11,8 +11,8 @@ public class SelectionSortHelper extends SortHelper{
 	protected void sortElements() {
 		long tempoInicial = System.currentTimeMillis();
 
-		for (int fixo = 0; fixo < array.length - 1; fixo++) {
-			int menor = fixo;
+		for (int i = 0; i < array.length - 1; i++) {
+			int first = i;
 		 
 			for (int i = menor + 1; i < array.length; i++) {
 				 if (array[i] < array[menor]) {

@@ -11,27 +11,18 @@ public class ShellSortHelper extends SortHelper{
 	protected void sortElements() {
 		Long tempoInicial = System.currentTimeMillis();
 
-		int i, j, temp, size = array.length;	    
-		int incremento = 1;
-
-		while (incremento < size) {
-		  incremento = 3 * incremento + 1;
-		}
-		 
-		while (incremento > 1) {
-		  incremento = incremento / 3;
-				
-			for (i = incremento; i < size; i++) {
-				temp = array[i];
-				j = i - incremento;
-				while (j >= 0 && temp < array[j]) {
-					array[j + incremento] = array[j];
-					j -= incremento;
-					this.trocas++;
-					this.comparacoes++;
+		for (int gap = array.length / 2; gap > 0; gap /= 2) {
+			for (int i = gap; i < array.length; i += gap) {
+				int item = array[i];
+				int slot = i;
+				while (slot >= gap && array[slot - gap] > item) {
+					++this.comparacoes;
+					++this.trocas;
+					array[slot] = array[slot - gap];
+					slot -= gap;
 				}
-				array[j + incremento] = temp;
-				this.trocas++;
+				++this.comparacoes;
+				array[slot] = item;
 			}
 		}
 
