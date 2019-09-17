@@ -41,6 +41,7 @@ public abstract class SortHelper  {
 			this.sortElements();
 			System.out.println("-------------------------------------");
 			System.out.println("Desempenho do algoritmo: "+ this.name );
+			System.out.println("Para um array com "+ this.array.length + " elementos");
 			System.out.println("Tempo de execução: " + this.time + " ms.");
 			System.out.println("Quantidade de trocas: " + this.trocas);
 			System.out.println("Quantidades de comparações: "+ this.comparacoes);
