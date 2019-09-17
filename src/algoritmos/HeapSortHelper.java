@@ -16,10 +16,11 @@ public class HeapSortHelper extends SortHelper{
 		}
 
 		for (int i = array.length - 1; i >= 0; i--){
+			this.trocas++;
 			int temp = array[0];
 			array[0] = array[i];
 			array[i] = temp;
-			
+			this.trocas++;
 			this.heapify(array, i, 0);
 		}
 
@@ -33,18 +34,23 @@ public class HeapSortHelper extends SortHelper{
 		int rightIndex = 2 * rootElementIndex + 2;  
 		
 		int largest = rootElementIndex;
-		
-		if (leftIndex < arrayLength && arr[leftIndex] > arr[largest])
+		this.comparacoes++;
+		if (leftIndex < arrayLength && arr[leftIndex] > arr[largest]) {
 				largest = leftIndex;
-		
-		if (rightIndex < arrayLength && arr[rightIndex] > arr[largest])
+				this.trocas++;
+		}
+		this.comparacoes++;
+		if (rightIndex < arrayLength && arr[rightIndex] > arr[largest]) {
 				largest = rightIndex;
-		
+				this.trocas++;
+		}
+		this.comparacoes++;
 		if (largest != rootElementIndex){
-				
+				this.trocas++;
 				int swap = arr[rootElementIndex];
 				arr[rootElementIndex] = arr[largest];
 				arr[largest] = swap;
+				this.trocas++;
 				
 				this.heapify(arr, arrayLength, largest);
 		}

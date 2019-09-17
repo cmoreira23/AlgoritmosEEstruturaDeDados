@@ -16,15 +16,19 @@ public class SelectionSortHelper extends SortHelper{
 		 
 			for (int i = menor + 1; i < array.length; i++) {
 				 if (array[i] < array[menor]) {
+					 this.trocas++;
 						menor = i;
 				 }
+				 this.comparacoes++;
 			}
 
 			if (menor != fixo) {
 				int t = array[fixo];
 				array[fixo] = array[menor];
 				array[menor] = t;
+				this.trocas++;
 			}
+			this.comparacoes++;
 		}
 
 		long tempoFinal = System.currentTimeMillis();

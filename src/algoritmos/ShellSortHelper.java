@@ -9,7 +9,7 @@ public class ShellSortHelper extends SortHelper{
 
 	@Override
 	protected void sortElements() {
-		long tempoInicial = System.currentTimeMillis();
+		Long tempoInicial = System.currentTimeMillis();
 
 		int i, j, temp, size = array.length;	    
 		int incremento = 1;
@@ -27,8 +27,11 @@ public class ShellSortHelper extends SortHelper{
 				while (j >= 0 && temp < array[j]) {
 					array[j + incremento] = array[j];
 					j -= incremento;
+					this.trocas++;
+					this.comparacoes++;
 				}
 				array[j + incremento] = temp;
+				this.trocas++;
 			}
 		}
 
